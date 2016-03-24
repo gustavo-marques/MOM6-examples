@@ -40,7 +40,7 @@ BATHYMETRY_AT_VEL = False       !   [Boolean] default = False
                                 ! If true, there are separate values for the basin depths
                                 ! at velocity points.  Otherwise the effects of of
                                 ! topography are entirely determined from thickness points.
-NK = 25                         !   [nondim]
+NK = 5                          !   [nondim]
                                 ! The number of model layers.
 
 ! === module MOM_verticalGrid ===
@@ -136,10 +136,10 @@ DTBT_RESET_PERIOD = 8.64E+04    !   [s] default = 3600.0
                                 ! set by DT_THERM.  This is only used if SPLIT is true.
 CHECK_BAD_SURFACE_VALS = False  !   [Boolean] default = False
                                 ! If true, check the surface state for ridiculous values.
-SAVE_INITIAL_CONDS = False      !   [Boolean] default = False
+SAVE_INITIAL_CONDS = True       !   [Boolean] default = False
                                 ! If true, write the initial conditions to a file given
                                 ! by IC_OUTPUT_FILE.
-IC_OUTPUT_FILE = "MOM_IC"       ! default = "MOM_IC"
+IC_OUTPUT_FILE = "DOME_IC"      ! default = "MOM_IC"
                                 ! The file into which to write the initial conditions.
 
 ! === module MOM_tracer_registry ===
@@ -176,7 +176,7 @@ DOME_TRACER_IC_FILE = ""        ! default = ""
                                 ! The name of a file from which to read the initial
                                 ! conditions for the DOME tracers, or blank to initialize
                                 ! them internally.
-SPONGE = True                   !   [Boolean] default = False
+SPONGE = False                  !   [Boolean] default = False
                                 ! If true, sponges may be applied anywhere in the domain.
                                 ! The exact location and properties of those sponges are
                                 ! specified from MOM_initialization.F90.
@@ -223,6 +223,10 @@ TOPO_CONFIG = "DOME"            !
                                 !     benchmark - use the benchmark test case topography.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
+                                !     TVWS - use a slope and channel configuration for the
+                                !       TVWS overflow test case.
+                                !     ISOMIP - use a slope and channel configuration for the
+                                !       ISOMIP test case.
                                 !     DOME2D - use a shelf and slope configuration for the
                                 !       DOME2D gravity current/overflow test case.
                                 !     seamount - Gaussian bump for spontaneous motion test case.
@@ -313,6 +317,10 @@ THICKNESS_CONFIG = "DOME"       !
                                 !       between the surface and MAXIMUM_DEPTH.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
+                                !     ISOMIP - use a slope and channel configuration for the
+                                !       ISOMIP test case.
+                                !     TVWS - use a slope and channel configuration for the
+                                !       TVWS overflow test case.
                                 !     benchmark - use the benchmark test case thicknesses.
                                 !     search - search a density profile for the interface
                                 !       densities. This is not yet implemented.
@@ -341,15 +349,6 @@ CONVERT_THICKNESS_UNITS = False !   [Boolean] default = False
 DEPRESS_INITIAL_SURFACE = False !   [Boolean] default = False
                                 ! If true,  depress the initial surface to avoid huge
                                 ! tsunamis when a large surface pressure is applied.
-SPONGE_CONFIG = "DOME"          ! default = "file"
-                                ! A string that sets how the sponges are configured:
-                                !     file - read sponge properties from the file
-                                !       specified by (SPONGE_FILE).
-                                !     DOME - use a slope and channel configuration for the
-                                !       DOME sill-overflow test case.
-                                !     USER - call a user modified routine.
-!Total sponge columns = 2400    !
-                                ! The total number of columns where sponges are applied.
 APPLY_OBC_U = False             !   [Boolean] default = False
                                 ! If true, open boundary conditions may be set at some
                                 ! u-points, with the configuration controlled by OBC_CONFIG
@@ -361,6 +360,8 @@ OBC_CONFIG = "DOME"             ! default = "file"
                                 !  configured:
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
+                                !     TVWS - use a slope and channel configuration for the
+                                !       TVWS overflow test case.
                                 !     USER - call a user modified routine.
 DIAG_REMAP_Z_GRID_DEF = ""      ! default = ""
                                 ! This sets the file and variable names that define the
@@ -515,14 +516,14 @@ UPWIND_1ST_CONTINUITY = False   !   [Boolean] default = False
                                 ! continuity solver.  This scheme is highly diffusive
                                 ! but may be useful for debugging or in single-column
                                 ! mode where its minimal stensil is useful.
-ETA_TOLERANCE = 1.25E-09        !   [m] default = 1.25E-09
+ETA_TOLERANCE = 2.5E-10         !   [m] default = 2.5E-10
                                 ! The tolerance for the differences between the
                                 ! barotropic and baroclinic estimates of the sea surface
                                 ! height due to the fluxes through each face.  The total
                                 ! tolerance for SSH is 4 times this value.  The default
                                 ! is 0.5*NK*ANGSTROM, and this should not be set less x
                                 ! than about 10^-15*MAXIMUM_DEPTH.
-ETA_TOLERANCE_AUX = 1.25E-09    !   [m] default = 1.25E-09
+ETA_TOLERANCE_AUX = 2.5E-10     !   [m] default = 2.5E-10
                                 ! The tolerance for free-surface height discrepancies
                                 ! between the barotropic solution and the sum of the
                                 ! layer thicknesses when calculating the auxiliary
@@ -1225,7 +1226,7 @@ DT_FORCING = 8.64E+04           !   [s] default = 1200.0
                                 ! The time step for changing forcing, coupling with other
                                 ! components, or potentially writing certain diagnostics.
                                 ! The default value is given by DT.
-DAYMAX = 2.0                    !   [days]
+DAYMAX = 30.0                   !   [days]
                                 ! The final time of the whole simulation, in units of
                                 ! TIMEUNIT seconds.  This also sets the potential end
                                 ! time of the present run segment if the end time is

@@ -14,12 +14,12 @@ NJGLOBAL = 2                    !
 ! Sets the horizontal array index types.
 
 ! === module MOM_grid ===
-! Parameters providing information about the vertical grid.
-NK = 20                         !   [nondim]
-                                ! The number of model layers.
+! Parameters providing information about the lateral grid.
 
 ! === module MOM_verticalGrid ===
 ! Parameters providing information about the vertical grid.
+NK = 20                         !   [nondim]
+                                ! The number of model layers.
 
 ! === module MOM ===
 BULKMIXEDLAYER = False          !   [Boolean] default = True
@@ -101,6 +101,10 @@ TOPO_CONFIG = "seamount"        !
                                 !     benchmark - use the benchmark test case topography.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
+                                !     TVWS - use a slope and channel configuration for the
+                                !       TVWS overflow test case.
+                                !     ISOMIP - use a slope and channel configuration for the
+                                !       ISOMIP test case.
                                 !     DOME2D - use a shelf and slope configuration for the
                                 !       DOME2D gravity current/overflow test case.
                                 !     seamount - Gaussian bump for spontaneous motion test case.
@@ -148,7 +152,7 @@ REGRIDDING_COORDINATE_MODE = "SIGMA" ! default = "LAYER"
                                 !  RHO   - continuous isopycnal
                                 !  HYCOM1 - HyCOM-like hybrid coordinate
                                 !  SLIGHT - stretched coordinates above continuous isopycnal
-INTERPOLATION_SCHEME = "PPM_IH4" ! default = "P1M_H2"
+INTERPOLATION_SCHEME = "PQM_IH4IH3" ! default = "P1M_H2"
                                 ! This sets the interpolation scheme to use to
                                 ! determine the new grid. These parameters are
                                 ! only relevant when REGRIDDING_COORDINATE_MODE is
@@ -179,7 +183,7 @@ BOUNDARY_EXTRAPOLATION = True   !   [Boolean] default = False
                                 ! than PCM. E.g., if PPM is used for remapping, a
                                 ! PPM reconstruction will also be used within
                                 ! boundary cells.
-REMAPPING_SCHEME = "PPM_IH4"    ! default = "PLM"
+REMAPPING_SCHEME = "PQM_IH4IH3" ! default = "PLM"
                                 ! This sets the reconstruction scheme used
                                 ! for vertical remapping for all variables.
                                 ! It can be one of the following schemes:
@@ -200,6 +204,10 @@ THICKNESS_CONFIG = "seamount"   !
                                 !       between the surface and MAXIMUM_DEPTH.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
+                                !     ISOMIP - use a slope and channel configuration for the
+                                !       ISOMIP test case.
+                                !     TVWS - use a slope and channel configuration for the
+                                !       TVWS overflow test case.
                                 !     benchmark - use the benchmark test case thicknesses.
                                 !     search - search a density profile for the interface
                                 !       densities. This is not yet implemented.

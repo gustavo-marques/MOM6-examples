@@ -19,32 +19,35 @@ NJGLOBAL = 2                    !
 ! Sets the horizontal array index types.
 
 ! === module MOM_grid ===
-! Parameters providing information about the vertical grid.
+! Parameters providing information about the lateral grid.
 G_EARTH = 9.8                   !   [m s-2] default = 9.8
                                 ! The gravitational acceleration of the Earth.
-RHO_0 = 1035.0                  !   [kg m-3] default = 1035.0
-                                ! The mean ocean density used with BOUSSINESQ true to
-                                ! calculate accelerations and the mass for conservation
-                                ! properties, or with BOUSSINSEQ false to convert some
-                                ! parameters from vertical units of m to kg m-2.
 FIRST_DIRECTION = 0             ! default = 0
                                 ! An integer that indicates which direction goes first
                                 ! in parts of the code that use directionally split
                                 ! updates, with even numbers (or 0) used for x- first
                                 ! and odd numbers used for y-first.
-BOUSSINESQ = True               !   [Boolean] default = True
-                                ! If true, make the Boussinesq approximation.
-ANGSTROM = 1.0E-10              !   [m] default = 1.0E-10
-                                ! The minumum layer thickness, usually one-Angstrom.
 BATHYMETRY_AT_VEL = False       !   [Boolean] default = False
                                 ! If true, there are separate values for the basin depths
                                 ! at velocity points.  Otherwise the effects of of
                                 ! topography are entirely determined from thickness points.
-NK = 20                         !   [nondim]
-                                ! The number of model layers.
 
 ! === module MOM_verticalGrid ===
 ! Parameters providing information about the vertical grid.
+RHO_0 = 1035.0                  !   [kg m-3] default = 1035.0
+                                ! The mean ocean density used with BOUSSINESQ true to
+                                ! calculate accelerations and the mass for conservation
+                                ! properties, or with BOUSSINSEQ false to convert some
+                                ! parameters from vertical units of m to kg m-2.
+BOUSSINESQ = True               !   [Boolean] default = True
+                                ! If true, make the Boussinesq approximation.
+ANGSTROM = 1.0E-10              !   [m] default = 1.0E-10
+                                ! The minumum layer thickness, usually one-Angstrom.
+H_TO_M = 1.0                    !   [m H-1] default = 1.0
+                                ! A constant that translates the model's internal
+                                ! units of thickness into m.
+NK = 20                         !   [nondim]
+                                ! The number of model layers.
 AVAILABLE_DIAGS_FILE = "available_diags.000000" ! default = "available_diags.000000"
                                 ! A file into which to write a list of all available
                                 ! ocean diagnostics that can be included in a diag_table.
@@ -269,6 +272,10 @@ TOPO_CONFIG = "seamount"        !
                                 !     benchmark - use the benchmark test case topography.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
+                                !     TVWS - use a slope and channel configuration for the
+                                !       TVWS overflow test case.
+                                !     ISOMIP - use a slope and channel configuration for the
+                                !       ISOMIP test case.
                                 !     DOME2D - use a shelf and slope configuration for the
                                 !       DOME2D gravity current/overflow test case.
                                 !     seamount - Gaussian bump for spontaneous motion test case.
@@ -377,7 +384,7 @@ REGRIDDING_COORDINATE_MODE = "SIGMA" ! default = "LAYER"
                                 !  SLIGHT - stretched coordinates above continuous isopycnal
 REGRIDDING_COORDINATE_UNITS = "Non-dimensional" ! default = "Non-dimensional"
                                 ! Units of the regridding coordinuate.
-INTERPOLATION_SCHEME = "PPM_IH4" ! default = "P1M_H2"
+INTERPOLATION_SCHEME = "PQM_IH4IH3" ! default = "P1M_H2"
                                 ! This sets the interpolation scheme to use to
                                 ! determine the new grid. These parameters are
                                 ! only relevant when REGRIDDING_COORDINATE_MODE is
@@ -443,7 +450,7 @@ MAX_LAYER_THICKNESS_CONFIG = "NONE" ! default = "NONE"
                                 !                the filename and variable name, separated
                                 !                by a comma or space, e.g. FILE:lev.nc,Z
                                 !  FNC1:string - FNC1:dz_min,H_total,power,precision
-REMAPPING_SCHEME = "PPM_IH4"    ! default = "PLM"
+REMAPPING_SCHEME = "PQM_IH4IH3" ! default = "PLM"
                                 ! This sets the reconstruction scheme used
                                 ! for vertical remapping for all variables.
                                 ! It can be one of the following schemes:
@@ -497,6 +504,10 @@ THICKNESS_CONFIG = "seamount"   !
                                 !       between the surface and MAXIMUM_DEPTH.
                                 !     DOME - use a slope and channel configuration for the
                                 !       DOME sill-overflow test case.
+                                !     ISOMIP - use a slope and channel configuration for the
+                                !       ISOMIP test case.
+                                !     TVWS - use a slope and channel configuration for the
+                                !       TVWS overflow test case.
                                 !     benchmark - use the benchmark test case thicknesses.
                                 !     search - search a density profile for the interface
                                 !       densities. This is not yet implemented.
