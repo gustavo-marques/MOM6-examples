@@ -1,3 +1,3 @@
 ! Blank file in which we can put "overrides" for parameters
-MIN_THICKNESS = 1.E-4
-MASS_WEIGHT_IN_PRESSURE_GRADIENT = True
+!MIN_THICKNESS = 1.E-9
+!MASS_WEIGHT_IN_PRESSURE_GRADIENT = True

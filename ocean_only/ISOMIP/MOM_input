@@ -88,7 +88,7 @@ DT = 180.0                     !   [s]
                                 ! coupling timestep in coupled mode.)
 DEBUG = False                    !   [Boolean] default = False
                                 ! If true, write out verbose debugging data.
-DT_THERM = 1800.0                !   [s] default = 300.0
+DT_THERM = 180.0                !   [s] default = 300.0
                                 ! The thermodynamic and tracer advection time step.
                                 ! Ideally DT_THERM should be an integer multiple of DT
                                 ! and less than the forcing or coupling time-step.
@@ -148,9 +148,10 @@ COORD_CONFIG = "linear"         !
                                 !     USER - call a user modified routine.
 LIGHTEST_DENSITY = 1027.2221708162701    !   [kg m-3] default = 1031.0
                                 ! The reference potential density used for layer 1.
-DENSITY_RANGE = 0.6140533336299541       !   [kg m-3] default = 2.0
+!DENSITY_RANGE = 0.6140533336299541       !   [kg m-3] default = 2.0
+DENSITY_RANGE = 0.62       !   [kg m-3] default = 2.0
                                 ! The range of reference potential densities in the layers.
-GFS = 9.8                      !   [m s-2] default = 9.8
+GFS = 0.98                      !   [m s-2] default = 9.8
                                 ! The reduced gravity at the free surface.
 
 ! === module MOM_grid_init ===
@@ -197,7 +198,7 @@ TOPO_CONFIG = "ISOMIP"          !
                                 !     USER - call a user modified routine.
 MAXIMUM_DEPTH = 720.0          !   [m]
                                 ! The maximum depth of the ocean.
-MINIMUM_DEPTH = 1.0             !   [m] default = 0.0
+MINIMUM_DEPTH = 0.0             !   [m] default = 0.0
                                 ! If MASKING_DEPTH is unspecified, then anything shallower than
                                 ! MINIMUM_DEPTH is assumed to be land and all fluxes are masked out.
                                 ! If MASKING_DEPTH is specified, then all depths shallower than
@@ -222,7 +223,7 @@ REGRIDDING_COORDINATE_MODE = "RHO" ! default = "LAYER"
                                 !  RHO   - continuous isopycnal
                                 !  HYCOM1 - HyCOM-like hybrid coordinate
                                 !  SLIGHT - stretched coordinates above continuous isopycnal
-INTERPOLATION_SCHEME = "P3M_IH4IH3" ! default = "P1M_H2"
+!INTERPOLATION_SCHEME = "PQM_IH4IH3" ! default = "P1M_H2"
                                 ! This sets the interpolation scheme to use to
                                 ! determine the new grid. These parameters are
                                 ! only relevant when REGRIDDING_COORDINATE_MODE is
@@ -238,7 +239,7 @@ INTERPOLATION_SCHEME = "P3M_IH4IH3" ! default = "P1M_H2"
                                 !  P3M_IH6IH5 (4th-order accurate)
                                 !  PQM_IH4IH3 (4th-order accurate)
                                 !  PQM_IH6IH5 (5th-order accurate)
-BOUNDARY_EXTRAPOLATION = True   !   [Boolean] default = False
+!BOUNDARY_EXTRAPOLATION = True   !   [Boolean] default = False
                                 ! When defined, a proper high-order reconstruction
                                 ! scheme is used within boundary cells rather
                                 ! than PCM. E.g., if PPM is used for remapping, a
@@ -262,7 +263,7 @@ MAX_LAYER_THICKNESS_CONFIG = "NONE" ! default = "NONE"
                                 !                the filename and variable name, separated
                                 !                by a comma or space, e.g. FILE:lev.nc,Z
                                 !  FNC1:string - FNC1:dz_min,H_total,power,precision
-REMAPPING_SCHEME = "PPM_H4" ! default = "PLM"
+!REMAPPING_SCHEME = "PQM_IH4IH3" ! default = "PLM"
                                 ! This sets the reconstruction scheme used
                                 ! for vertical remapping for all variables.
                                 ! It can be one of the following schemes:
@@ -272,6 +273,8 @@ REMAPPING_SCHEME = "PPM_H4" ! default = "PLM"
                                 ! PPM_IH4     (3rd-order accurate)
                                 ! PQM_IH4IH3  (4th-order accurate)
                                 ! PQM_IH6IH5  (5th-order accurate)
+MIN_THICKNESS = 1.0E-8
+MASS_WEIGHT_IN_PRESSURE_GRADIENT = True
 FATAL_CHECK_RECONSTRUCTIONS = False !   [Boolean] default = False
                                 ! If true, cell-by-cell reconstructions are checked for
                                 ! consistency and if non-monotonicty or an inconsistency is
@@ -411,7 +414,7 @@ HMIX_FIXED = 20.0               !   [m]
                                 ! The prescribed depth over which the near-surface
                                 ! viscosity and diffusivity are elevated when the bulk
                                 ! mixed layer is not used.
-KV = 1.0E-05                    !   [m2 s-1]
+KV = 1.0E-04                    !   [m2 s-1]
                                 ! The background kinematic viscosity in the interior.
                                 ! The molecular value, ~1e-6 m2 s-1, may be used.
 KVML = 0.01                     !   [m2 s-1] default = 1.0E-04
@@ -434,7 +437,7 @@ MAXVEL = 10.0                   !   [m s-1] default = 3.0E+08
 LINEAR_DRAG = True              !   [Boolean] default = False
                                 ! If LINEAR_DRAG and BOTTOMDRAGLAW are defined the drag
                                 ! law is cdrag*DRAG_BG_VEL*u.
-DRAG_BG_VEL = 0.05              !   [m s-1] default = 0.0
+DRAG_BG_VEL = 0.0              !   [m s-1] default = 0.0
                                 ! DRAG_BG_VEL is either the assumed bottom velocity (with
                                 ! LINEAR_DRAG) or an unresolved  velocity that is
                                 ! combined with the resolved velocity to estimate the
