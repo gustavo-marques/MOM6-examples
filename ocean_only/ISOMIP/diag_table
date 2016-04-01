@@ -22,8 +22,14 @@
 "ocean_model","e","e","prog_%4yr_%3dy","all",.false.,"none",2
 "ocean_model","temp","temp","prog_%4yr_%3dy","all",.false.,"none",2
 "ocean_model","salt","salt","prog_%4yr_%3dy","all",.false.,"none",2
+"ocean_model","melt","melt","prog_%4yr_%3dy","all",.false.,"none",2
+"ocean_model","area_shelf_h","area_shelf_h","prog_%4yr_%3dy","all",.false.,"none",2
+"ocean_model","shelf_mass","shelf_mass","prog_%4yr_%3dy","all",.false.,"none",2
+"ocean_model","h_shelf","h_shelf","prog_%4yr_%3dy","all",.false.,"none",2
+"ocean_model","h_mask","h_mask","prog_%4yr_%3dy","all",.false.,"none",2
+"ocean_model","ice_surf","ice_surf","prog_%4yr_%3dy","all",.false.,"none",2
 #"ocean_model","Rml","Rml","prog_%4yr_%3dy","all",.false.,"none",2
-"ocean_model","tr_D1","tr1","prog_%4yr_%3dy","all",.false.,"none",2
+#"ocean_model","tr_D1","tr1","prog_%4yr_%3dy","all",.false.,"none",2
 
 #"ocean_model","RV","RV","prog_%4yr_%3dy","all",.false.,"none",2
 #"ocean_model","PV","PV","prog_%4yr_%3dy","all",.false.,"none",2

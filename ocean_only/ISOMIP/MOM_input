@@ -153,8 +153,49 @@ DENSITY_RANGE = 0.62       !   [kg m-3] default = 2.0
                                 ! The range of reference potential densities in the layers.
 GFS = 0.98                      !   [m s-2] default = 9.8
                                 ! The reduced gravity at the free surface.
-
-! === module MOM_grid_init ===
+! === module MOM_ice_shelf === 
+ICE_SHELF = True
+DYNAMIC_SHELF_MASS = True
+SHELF_MOVING_FRONT = True
+SHELF_THERMO = True
+SHELF_THREE_EQN = True
+BASAL_FRICTION_COEFF = 0.0    ! this needs to be checked
+BASAL_FRICTION_EXP = 0.0      ! this needs to be checked
+DENSITY_ICE = 918.0
+ICE_VELOCITY_TIMESTEP = 86400.0
+!WRITE_OUTPUT_TO_FILE = True   ! for debugging purposes
+ICE_SHELF_FLUX_FACTOR = 0.0
+ICE_SHELF_TEMPERATURE = -20.0
+ICE_PROFILE_CONFIG = "FILE"
+ICE_THICKNESS_FILE = "isomip_ice_shelf1.nc"
+ICE_THICKNESS_VARNAME = "thick"
+ICE_AREA_VARNAME = "area"
+DEPRESS_INITIAL_SURFACE = True
+MIN_THICKNESS_SIMPLE_CALVE = 100.0    ! min thickness rule for VERY simple calving law
+SURFACE_HEIGHT_IC_FILE = "isomip_ice_shelf1.nc"
+SURFACE_HEIGHT_IC_VAR = "thick"
+SURFACE_HEIGHT_IC_SCALE = -0.885
+COL_THICK_MELT_THRESHOLD = 1.0
+CDRAG_SHELF = 0.0025
+DRAG_BG_VEL_SHELF = 0.0001
+DEPTH_MIN_DYN_PSURF = 50.0
+ICE_LENGTH_DYN_PSURF = 1.e3
+CONST_DYN_PSURF = 0.9
+!CALVE_TO_MASK = True       ! if true, do not allow an ice shelf where prohibited by a mask
+!CALVING_MASK_FILE = "isomip_ice_shelf1.nc"   ! The file with a mask for where calving might occur.
+!CALVING_MASK_VARNAME = "calving_mask"        !The variable to use in masking calving.
+TFREEZE_FORM = "MILLERO_78"
+USE_RIGID_SEA_ICE = True
+PRESSURE_DEPENDENT_FRAZIL = True
+FRAZIL = True                   !    If FRAZIL is defined, water freezes if it
+                                !  gets colder than the freezing point, and the
+                                !  accumulated heat deficit is returned in the
+                                !  surface state.
+RECLAIM_FRAZIL = True           !    If defined, balance heat consumption by
+                                !  frazil formation by cooling any overlying water
+                                !  down to the freezing point to avoid creating
+                                !  thin sea-ice for SSTs above freezing.
+! === module MOM_grid_init ===  
 GRID_CONFIG = "cartesian"       !
                                 ! A character string that determines the method for
                                 ! defining the horizontal grid.  Current options are:
