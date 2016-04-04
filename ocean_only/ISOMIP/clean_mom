@@ -1,1 +1,1 @@
-rm *.nc *.out CPU_* time* ISO* available_diags.* *.png exitcode ocean.stats U_velocity_truncations V_velocity_truncations 
+rm -rf *.nc *.out CPU_* time* ISO* available_diags.* *.png exitcode ocean.stats U_velocity_truncations V_velocity_truncations *mask H h rho temp salt 

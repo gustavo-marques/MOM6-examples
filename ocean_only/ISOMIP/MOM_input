@@ -86,7 +86,7 @@ DT = 180.0                     !   [s]
                                 ! is actually used will be an integer fraction of the
                                 ! forcing time-step (DT_FORCING in ocean-only mode or the
                                 ! coupling timestep in coupled mode.)
-DEBUG = False                    !   [Boolean] default = False
+DEBUG = False                   !   [Boolean] default = False
                                 ! If true, write out verbose debugging data.
 DT_THERM = 180.0                !   [s] default = 300.0
                                 ! The thermodynamic and tracer advection time step.
@@ -148,22 +148,23 @@ COORD_CONFIG = "linear"         !
                                 !     USER - call a user modified routine.
 LIGHTEST_DENSITY = 1027.2221708162701    !   [kg m-3] default = 1031.0
                                 ! The reference potential density used for layer 1.
-!DENSITY_RANGE = 0.6140533336299541       !   [kg m-3] default = 2.0
-DENSITY_RANGE = 0.62       !   [kg m-3] default = 2.0
+DENSITY_RANGE = 0.6140533336299541       !   [kg m-3] default = 2.0
+!DENSITY_RANGE = 0.62       !   [kg m-3] default = 2.0
                                 ! The range of reference potential densities in the layers.
 GFS = 0.98                      !   [m s-2] default = 9.8
                                 ! The reduced gravity at the free surface.
 ! === module MOM_ice_shelf === 
-ICE_SHELF = True
-DYNAMIC_SHELF_MASS = True
-SHELF_MOVING_FRONT = True
+ICE_SHELF = False
+DYNAMIC_SHELF_MASS = False
+SHELF_MOVING_FRONT = False
 SHELF_THERMO = True
-SHELF_THREE_EQN = True
-BASAL_FRICTION_COEFF = 0.0    ! this needs to be checked
+SHELF_THREE_EQN = False
+SHELF_2EQ_GAMMA_T = 0.0001
+BASAL_FRICTION_COEFF = 0.0  ! 3.160e6    ! this needs to be checked
 BASAL_FRICTION_EXP = 0.0      ! this needs to be checked
 DENSITY_ICE = 918.0
 ICE_VELOCITY_TIMESTEP = 86400.0
-!WRITE_OUTPUT_TO_FILE = True   ! for debugging purposes
+WRITE_OUTPUT_TO_FILE = True   ! for debugging purposes
 ICE_SHELF_FLUX_FACTOR = 0.0
 ICE_SHELF_TEMPERATURE = -20.0
 ICE_PROFILE_CONFIG = "FILE"
@@ -173,12 +174,14 @@ ICE_AREA_VARNAME = "area"
 DEPRESS_INITIAL_SURFACE = True
 MIN_THICKNESS_SIMPLE_CALVE = 100.0    ! min thickness rule for VERY simple calving law
 SURFACE_HEIGHT_IC_FILE = "isomip_ice_shelf1.nc"
-SURFACE_HEIGHT_IC_VAR = "thick"
-SURFACE_HEIGHT_IC_SCALE = -0.885
+SURFACE_HEIGHT_IC_VAR = "height"
+!SURFACE_HEIGHT_IC_SCALE = -0.885
 COL_THICK_MELT_THRESHOLD = 1.0
 CDRAG_SHELF = 0.0025
+A_GLEN_ISOTHERM = 2.0e-17
+MIN_STRAIN_RATE_GLEN = 1.e-20
 DRAG_BG_VEL_SHELF = 0.0001
-DEPTH_MIN_DYN_PSURF = 50.0
+DEPTH_MIN_DYN_PSURF = 10.0
 ICE_LENGTH_DYN_PSURF = 1.e3
 CONST_DYN_PSURF = 0.9
 !CALVE_TO_MASK = True       ! if true, do not allow an ice shelf where prohibited by a mask
@@ -186,7 +189,7 @@ CONST_DYN_PSURF = 0.9
 !CALVING_MASK_VARNAME = "calving_mask"        !The variable to use in masking calving.
 TFREEZE_FORM = "MILLERO_78"
 USE_RIGID_SEA_ICE = True
-PRESSURE_DEPENDENT_FRAZIL = True
+PRESSURE_DEPENDENT_FRAZIL = False
 FRAZIL = True                   !    If FRAZIL is defined, water freezes if it
                                 !  gets colder than the freezing point, and the
                                 !  accumulated heat deficit is returned in the
@@ -264,7 +267,7 @@ REGRIDDING_COORDINATE_MODE = "RHO" ! default = "LAYER"
                                 !  RHO   - continuous isopycnal
                                 !  HYCOM1 - HyCOM-like hybrid coordinate
                                 !  SLIGHT - stretched coordinates above continuous isopycnal
-!INTERPOLATION_SCHEME = "PQM_IH4IH3" ! default = "P1M_H2"
+INTERPOLATION_SCHEME = "PQM_IH4IH3" ! default = "P1M_H2"
                                 ! This sets the interpolation scheme to use to
                                 ! determine the new grid. These parameters are
                                 ! only relevant when REGRIDDING_COORDINATE_MODE is
@@ -280,7 +283,7 @@ REGRIDDING_COORDINATE_MODE = "RHO" ! default = "LAYER"
                                 !  P3M_IH6IH5 (4th-order accurate)
                                 !  PQM_IH4IH3 (4th-order accurate)
                                 !  PQM_IH6IH5 (5th-order accurate)
-!BOUNDARY_EXTRAPOLATION = True   !   [Boolean] default = False
+BOUNDARY_EXTRAPOLATION = True   !   [Boolean] default = False
                                 ! When defined, a proper high-order reconstruction
                                 ! scheme is used within boundary cells rather
                                 ! than PCM. E.g., if PPM is used for remapping, a
@@ -304,7 +307,7 @@ MAX_LAYER_THICKNESS_CONFIG = "NONE" ! default = "NONE"
                                 !                the filename and variable name, separated
                                 !                by a comma or space, e.g. FILE:lev.nc,Z
                                 !  FNC1:string - FNC1:dz_min,H_total,power,precision
-!REMAPPING_SCHEME = "PQM_IH4IH3" ! default = "PLM"
+REMAPPING_SCHEME = "PQM_IH4IH3" ! default = "PLM"
                                 ! This sets the reconstruction scheme used
                                 ! for vertical remapping for all variables.
                                 ! It can be one of the following schemes:
@@ -314,7 +317,7 @@ MAX_LAYER_THICKNESS_CONFIG = "NONE" ! default = "NONE"
                                 ! PPM_IH4     (3rd-order accurate)
                                 ! PQM_IH4IH3  (4th-order accurate)
                                 ! PQM_IH6IH5  (5th-order accurate)
-MIN_THICKNESS = 1.0E-8
+!MIN_THICKNESS = 1.0E-8
 MASS_WEIGHT_IN_PRESSURE_GRADIENT = True
 FATAL_CHECK_RECONSTRUCTIONS = False !   [Boolean] default = False
                                 ! If true, cell-by-cell reconstructions are checked for
@@ -478,7 +481,7 @@ MAXVEL = 10.0                   !   [m s-1] default = 3.0E+08
 LINEAR_DRAG = True              !   [Boolean] default = False
                                 ! If LINEAR_DRAG and BOTTOMDRAGLAW are defined the drag
                                 ! law is cdrag*DRAG_BG_VEL*u.
-DRAG_BG_VEL = 0.0              !   [m s-1] default = 0.0
+DRAG_BG_VEL = 1.0e-7              !   [m s-1] default = 0.0
                                 ! DRAG_BG_VEL is either the assumed bottom velocity (with
                                 ! LINEAR_DRAG) or an unresolved  velocity that is
                                 ! combined with the resolved velocity to estimate the
@@ -582,10 +585,10 @@ PEN_SW_FRAC = 0.42              !   [nondim] default = 0.0
 ! === module MOM_surface_forcing ===
 VARIABLE_WINDS = False          !   [Boolean] default = True
                                 ! If true, the winds vary in time after the initialization.
-VARIABLE_BUOYFORCE = False      !   [Boolean] default = True
+VARIABLE_BUOYFORCE = True      !   [Boolean] default = True
                                 ! If true, the buoyancy forcing varies in time after the
                                 ! initialization of the model.
-BUOY_CONFIG = "NONE"            !
+BUOY_CONFIG = "zero"            !
                                 ! The character string that indicates how buoyancy forcing
                                 ! is specified. Valid options include (file), (zero),
                                 ! (linear), (USER), and (NONE).
@@ -593,7 +596,8 @@ WIND_CONFIG = "zero"            !
                                 ! The character string that indicates how wind forcing
                                 ! is specified. Valid options include (file), (2gyre),
                                 ! (1gyre), (gyres), (zero), and (USER).
-
+!CONST_WIND_TAUX = 1.0e-20
+!CONST_WIND_TAUY = 0.0
 ! === module MOM_sum_output ===
 MAXTRUNC = 5000                   !   [truncations save_interval-1] default = 0
                                 ! The run will be stopped, and the day set to a very

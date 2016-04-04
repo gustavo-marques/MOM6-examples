@@ -15,9 +15,8 @@ lowerSurface = netCDF4.Dataset('Ocean1_input_geom_v1.01.nc').variables['lowerSur
 [X,Y]=np.meshgrid(x/1.0e3,y/1.0e3)
 
 # MOM file
-icefile = netCDF4.Dataset('isomip_ice_shelf1.nc','r+')
-#area = icefile.variables['area'][:] 
-#height = icefile.variables['height'][:] 
+icefile = netCDF4.Dataset('isomip_ice_shelf2.nc','r+')
+area = icefile.variables['area'][:] 
 
 x2 = x[::2] 
 y2 = y[::2] 
@@ -53,10 +52,8 @@ plt.contourf(X2,Y2,thick)
 plt.colorbar()
 plt.savefig('thick.png')
 
-icefile.variables['area'][:] = area
-icefile.variables['thick'][:] = thick
-icefile.variables['height'][:] = tmp_lower
-
+icefile.variables['area'][:] = 0.0 #area
+icefile.variables['thick'][:] = 0.0 #thick
 icefile.close()
 print 'Done!'
 

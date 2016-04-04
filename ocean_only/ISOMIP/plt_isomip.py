@@ -1,3 +1,6 @@
+import matplotlib as mpl
+mpl.use('Agg')
+
 import netCDF4
 import numpy as np
 import matplotlib.pyplot as plt
