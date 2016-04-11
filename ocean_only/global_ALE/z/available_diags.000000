@@ -838,6 +838,30 @@
     ! long_name: Coordinate Potential Density
     ! units: kg meter-3
     ! cell_methods: xh:mean yh:mean zl:mean
+"ocean_model", "rhopot0"  [Unused]
+    ! long_name: Potential density referenced to surface
+    ! units: kg meter-3
+    ! cell_methods: xh:mean yh:mean zl:mean
+"ocean_model_z_new", "rhopot0"  [Unused]
+    ! long_name: Potential density referenced to surface
+    ! units: kg meter-3
+    ! cell_methods: xh:mean yh:mean zl:mean
+"ocean_model", "rhopot2"  [Unused]
+    ! long_name: Potential density referenced to 2000 dbar
+    ! units: kg meter-3
+    ! cell_methods: xh:mean yh:mean zl:mean
+"ocean_model_z_new", "rhopot2"  [Unused]
+    ! long_name: Potential density referenced to 2000 dbar
+    ! units: kg meter-3
+    ! cell_methods: xh:mean yh:mean zl:mean
+"ocean_model", "rhoinsitu"  [Unused]
+    ! long_name: In situ density
+    ! units: kg meter-3
+    ! cell_methods: xh:mean yh:mean zl:mean
+"ocean_model_z_new", "rhoinsitu"  [Unused]
+    ! long_name: In situ density
+    ! units: kg meter-3
+    ! cell_methods: xh:mean yh:mean zl:mean
 "ocean_model", "dudt"  [Unused]
     ! long_name: Zonal Acceleration
     ! units: meter second-2
@@ -1436,16 +1460,21 @@
     ! long_name: The volume flux added to stop the ocean from drying out and becoming negative in depth
     ! units: meter second-1
     ! cell_methods: xh:mean yh:mean
+"ocean_model", "rsdoabsorb"  [Used]
+    ! long_name: Convergence of Penetrative Shortwave Flux in Sea Water Layer
+    ! units: Watt meter-2
+    ! standard_name: net_rate_of_absorption_of_shortwave_energy_in_ocean_layer
+    ! cell_methods: xh:mean yh:mean zl:mean
+"ocean_model_z_new", "rsdoabsorb"  [Unused]
+    ! long_name: Convergence of Penetrative Shortwave Flux in Sea Water Layer
+    ! units: Watt meter-2
+    ! standard_name: net_rate_of_absorption_of_shortwave_energy_in_ocean_layer
+    ! cell_methods: xh:mean yh:mean zl:mean
 "ocean_model", "rsdo"  [Used]
-    ! long_name: Downwelling Shortwave Flux in Sea Water
+    ! long_name: Downwelling Shortwave Flux in Sea Water at Grid Cell Upper Interface
     ! units: Watt meter-2
     ! standard_name: downwelling_shortwave_flux_in_sea_water
-    ! cell_methods: xh:mean yh:mean zl:mean
-"ocean_model_z_new", "rsdo"  [Unused]
-    ! long_name: Downwelling Shortwave Flux in Sea Water
-    ! units: Watt meter-2
-    ! standard_name: downwelling_shortwave_flux_in_sea_water
-    ! cell_methods: xh:mean yh:mean zl:mean
+    ! cell_methods: xh:mean yh:mean zi:point
 "ocean_model", "nonpenSW"  [Unused]
     ! long_name: Non-downwelling SW radiation (i.e., SW absorbed in ocean surface with LW,SENS,LAT)
     ! units: Watt meter-2
