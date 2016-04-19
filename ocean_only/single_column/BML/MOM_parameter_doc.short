@@ -10,11 +10,11 @@ NJGLOBAL = 2                    !
                                 ! y-direction in the physical domain. With STATIC_MEMORY_
                                 ! this is set in MOM_memory.h at compile time.
 
-! === module MOM_hor_index ===
-! Sets the horizontal array index types.
-
 ! === module MOM_grid ===
 ! Parameters providing information about the lateral grid.
+
+! === module MOM_hor_index ===
+! Sets the horizontal array index types.
 
 ! === module MOM_verticalGrid ===
 ! Parameters providing information about the vertical grid.
@@ -93,6 +93,15 @@ MINIMUM_DEPTH = 0.5             !   [m] default = 0.0
                                 ! The minimum depth of the ocean.
 MAXIMUM_DEPTH = 6000.0          !   [m]
                                 ! The maximum depth of the ocean.
+ROTATION = "betaplane"          ! default = "2omegasinlat"
+                                ! This specifies how the Coriolis parameter is specified:
+                                !     2omegasinlat - Use twice the planetary rotation rate
+                                !       times the sine of latitude.
+                                !     betaplane - Use a beta-plane or f-plane.
+                                !     USER - call a user modified routine.
+F_0 = 7.59943E-05               !   [s-1] default = 0.0
+                                ! The reference value of the Coriolis parameter with the
+                                ! betaplane option.
 COORD_CONFIG = "file"           !
                                 ! This specifies how layers are to be defined:
                                 !     file - read coordinate information from the file
@@ -110,15 +119,6 @@ COORD_CONFIG = "file"           !
                                 !     USER - call a user modified routine.
 COORD_FILE = "../isopyc_coords.nc" !
                                 ! The file from which the coordinate densities are read.
-ROTATION = "betaplane"          ! default = "2omegasinlat"
-                                ! This specifies how the Coriolis parameter is specified:
-                                !     2omegasinlat - Use twice the planetary rotation rate
-                                !       times the sine of latitude.
-                                !     betaplane - Use a beta-plane or f-plane.
-                                !     USER - call a user modified routine.
-F_0 = 7.59943E-05               !   [s-1] default = 0.0
-                                ! The reference value of the Coriolis parameter with the
-                                ! betaplane option.
 INIT_LAYERS_FROM_Z_FILE = True  !   [Boolean] default = False
                                 ! If true, intialize the layer thicknesses, temperatures,
                                 ! and salnities from a Z-space file on a latitude-
@@ -168,6 +168,9 @@ BBL_THICK_MIN = 0.1             !   [m] default = 0.0
                                 ! used with BOTTOMDRAGLAW. This might be
                                 ! Kv / (cdrag * drag_bg_vel) to give Kv as the minimum
                                 ! near-bottom viscosity.
+KV = 1.0E-04                    !   [m2 s-1]
+                                ! The background kinematic viscosity in the interior.
+                                ! The molecular value, ~1e-6 m2 s-1, may be used.
 UPWIND_1ST_CONTINUITY = True    !   [Boolean] default = False
                                 ! If true, CONTINUITY_PPM becomes a 1st-order upwind
                                 ! continuity solver.  This scheme is highly diffusive
@@ -224,9 +227,6 @@ V_TRUNC_FILE = "V_velocity_truncations" ! default = ""
 HARMONIC_VISC = True            !   [Boolean] default = False
                                 ! If true, use the harmonic mean thicknesses for
                                 ! calculating the vertical viscosity.
-KV = 1.0E-04                    !   [m2 s-1]
-                                ! The background kinematic viscosity in the interior.
-                                ! The molecular value, ~1e-6 m2 s-1, may be used.
 MAXVEL = 6.0                    !   [m s-1] default = 3.0E+08
                                 ! The maximum velocity allowed before the velocity
                                 ! components are truncated.

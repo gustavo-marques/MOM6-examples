@@ -10,11 +10,11 @@ NJGLOBAL = 2                    !
                                 ! y-direction in the physical domain. With STATIC_MEMORY_
                                 ! this is set in MOM_memory.h at compile time.
 
-! === module MOM_hor_index ===
-! Sets the horizontal array index types.
-
 ! === module MOM_grid ===
 ! Parameters providing information about the lateral grid.
+
+! === module MOM_hor_index ===
+! Sets the horizontal array index types.
 
 ! === module MOM_verticalGrid ===
 ! Parameters providing information about the vertical grid.
@@ -105,6 +105,12 @@ MINIMUM_DEPTH = 1.0             !   [m] default = 0.0
                                 ! The minimum depth of the ocean.
 MAXIMUM_DEPTH = 1000.0          !   [m]
                                 ! The maximum depth of the ocean.
+ROTATION = "betaplane"          ! default = "2omegasinlat"
+                                ! This specifies how the Coriolis parameter is specified:
+                                !     2omegasinlat - Use twice the planetary rotation rate
+                                !       times the sine of latitude.
+                                !     betaplane - Use a beta-plane or f-plane.
+                                !     USER - call a user modified routine.
 COORD_CONFIG = "linear"         !
                                 ! This specifies how layers are to be defined:
                                 !     file - read coordinate information from the file
@@ -125,12 +131,6 @@ LIGHTEST_DENSITY = 1034.0       !   [kg m-3] default = 1035.0
                                 ! interface.
 GFS = 0.98                      !   [m s-2] default = 9.8
                                 ! The reduced gravity at the free surface.
-ROTATION = "betaplane"          ! default = "2omegasinlat"
-                                ! This specifies how the Coriolis parameter is specified:
-                                !     2omegasinlat - Use twice the planetary rotation rate
-                                !       times the sine of latitude.
-                                !     betaplane - Use a beta-plane or f-plane.
-                                !     USER - call a user modified routine.
 THICKNESS_CONFIG = "uniform"    !
                                 ! A string that determines how the initial layer
                                 ! thicknesses are specified for a new run:
@@ -210,6 +210,9 @@ BBL_THICK_MIN = 0.1             !   [m] default = 0.0
                                 ! used with BOTTOMDRAGLAW. This might be
                                 ! Kv / (cdrag * drag_bg_vel) to give Kv as the minimum
                                 ! near-bottom viscosity.
+KV = 0.0                        !   [m2 s-1]
+                                ! The background kinematic viscosity in the interior.
+                                ! The molecular value, ~1e-6 m2 s-1, may be used.
 BE = 0.7                        !   [nondim] default = 0.6
                                 ! If SPLIT is true, BE determines the relative weighting
                                 ! of a  2nd-order Runga-Kutta baroclinic time stepping
@@ -269,9 +272,6 @@ HMIX_FIXED = 20.0               !   [m]
                                 ! The prescribed depth over which the near-surface
                                 ! viscosity and diffusivity are elevated when the bulk
                                 ! mixed layer is not used.
-KV = 0.0                        !   [m2 s-1]
-                                ! The background kinematic viscosity in the interior.
-                                ! The molecular value, ~1e-6 m2 s-1, may be used.
 KVML = 0.01                     !   [m2 s-1] default = 0.0
                                 ! The kinematic viscosity in the mixed layer.  A typical
                                 ! value is ~1e-2 m2 s-1. KVML is not used if
