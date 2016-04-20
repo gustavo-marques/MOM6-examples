@@ -107,6 +107,15 @@ TIMEUNIT = 8.64E+04             !   [s] default = 8.64E+04
 ICE_STATS_INTERVAL = 0.25       !   [days] default = 1.0
                                 ! The interval in units of TIMEUNIT between writes of the
                                 ! globally summed ice statistics and conservation checks.
+NCAT_ICE = 5                    !   [nondim] default = 5
+                                ! The number of sea ice thickness categories.
+NK_ICE = 4                      !   [nondim] default = 4
+                                ! The number of layers within the sea ice.
+NK_SNOW = 1                     !   [nondim] default = 1
+                                ! The number of layers within the snow atop the sea ice.
+H_TO_KG_M2 = 1.0                !   [kg m-2 H-1] default = 1.0
+                                ! A constant that translates thicknesses from the model's
+                                ! internal units of thickness to kg m-2.
 REENTRANT_X = True              !   [Boolean] default = True
                                 ! If true, the domain is zonally reentrant.
 REENTRANT_Y = False             !   [Boolean] default = False
@@ -126,24 +135,26 @@ GLOBAL_INDEXING = False         !   [Boolean] default = False
                                 ! If true, use a global lateral indexing convention, so
                                 ! that corresponding points on different processors have
                                 ! the same index. This does not work with static memory.
-NCAT_ICE = 5                    !   [nondim] default = 5
-                                ! The number of sea ice thickness categories.
-NK_ICE = 4                      !   [nondim] default = 4
-                                ! The number of layers within the sea ice.
-NK_SNOW = 1                     !   [nondim] default = 1
-                                ! The number of layers within the snow atop the sea ice.
-H_TO_KG_M2 = 1.0                !   [kg m-2 H-1] default = 1.0
-                                ! A constant that translates thicknesses from the model's
-                                ! internal units of thickness to kg m-2.
 FIRST_DIRECTION = 0             ! default = 0
                                 ! An integer that indicates which direction goes first
                                 ! in parts of the code that use directionally split
                                 ! updates, with even numbers (or 0) used for x- first
                                 ! and odd numbers used for y-first.
+
+! === module MOM_hor_index ===
+! Sets the horizontal array index types.
 GRID_FILE = "ocean_hgrid.nc"    !
                                 ! Name of the file from which to read horizontal grid data.
 INPUTDIR = "INPUT"              ! default = "."
                                 ! The directory in which input files are found.
+MINIMUM_DEPTH = 0.0             !   [m] default = 0.0
+                                ! If MASKING_DEPTH is unspecified, then anything shallower than
+                                ! MINIMUM_DEPTH is assumed to be land and all fluxes are masked out.
+                                ! If MASKING_DEPTH is specified, then all depths shallower than
+                                ! MINIMUM_DEPTH but deeper than MASKING_DEPTH are rounded to MINIMUM_DEPTH.
+MASKING_DEPTH = -9999.0         !   [m] default = -9999.0
+                                ! The depth below which to mask points as land points, for which all
+                                ! fluxes are zeroed out. MASKING_DEPTH is ignored if negative.
 AVAILABLE_DIAGS_FILE = "SIS.available_diags" ! default = "SIS.available_diags"
                                 ! A file into which to write a list of all available
                                 ! ocean diagnostics that can be included in a diag_table.

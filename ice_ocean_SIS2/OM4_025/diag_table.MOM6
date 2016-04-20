@@ -26,7 +26,7 @@
 # Sections for CMIP6/OMIP 
 "ocean_Barents_opening",         5, "days",   1, "days", "time"
 "ocean_Bering_Strait",           5, "days",   1, "days", "time"
-"ocean_Canadian_Archipelago",    5, "days",   1, "days", "time"
+"ocean_Davis_Strait",            5, "days",   1, "days", "time"
 "ocean_Windward_Passage",        5, "days",   1, "days", "time"
 "ocean_Denmark_Strait",          5, "days",   1, "days", "time"
 "ocean_Drake_Passage",           5, "days",   1, "days", "time"
@@ -197,12 +197,12 @@
 "ocean_model", "vo",   "vo",       "ocean_Bering_Strait",    "all", "mean", "-171.4 -168.7  66.1 66.1 -1 -1",2
 "ocean_model", "e",    "e",        "ocean_Bering_Strait",    "all", "mean", "-171.4 -168.7  66.1 66.1 -1 -1",2
 
-# Approximate section to capture outflow of Arctic through Davis Strait and Labrador Sea
-"ocean_model", "thetao", "theta",  "ocean_Canadian_Archipelago", "all", "mean", "-85.0 -50.0  68.8 68.8 -1 -1",2
-"ocean_model", "so",   "so",       "ocean_Canadian_Archipelago", "all", "mean", "-85.0 -50.0  68.8 68.8 -1 -1",2
-"ocean_model", "vmo",  "vmo",      "ocean_Canadian_Archipelago", "all", "mean", "-85.0 -50.0  68.8 68.8 -1 -1",2
-"ocean_model", "vo",   "vo",       "ocean_Canadian_Archipelago", "all", "mean", "-85.0 -50.0  68.8 68.8 -1 -1",2
-"ocean_model", "e",    "e",        "ocean_Canadian_Archipelago", "all", "mean", "-85.0 -50.0  68.8 68.8 -1 -1",2
+# Approximate section to capture outflow of Arctic through Davis Strait
+"ocean_model", "thetao", "theta",  "ocean_Davis_Strait", "all", "mean", "-65.0 -48.0  66.0 66.0 -1 -1",2
+"ocean_model", "so",   "so",       "ocean_Davis_Strait", "all", "mean", "-65.0 -48.0  66.0 66.0 -1 -1",2
+"ocean_model", "vmo",  "vmo",      "ocean_Davis_Strait", "all", "mean", "-65.0 -48.0  66.0 66.0 -1 -1",2
+"ocean_model", "vo",   "vo",       "ocean_Davis_Strait", "all", "mean", "-65.0 -48.0  66.0 66.0 -1 -1",2
+"ocean_model", "e",    "e",        "ocean_Davis_Strait", "all", "mean", "-65.0 -48.0  66.0 66.0 -1 -1",2
 
 # Cuba-Haiti Windward Passage: settings specific to OM4 grid 
 "ocean_model", "thetao", "theta",  "ocean_Windward_Passage", "all", "mean", "-75.0 -72.5 19.96 19.96 -1 -1",2
@@ -282,11 +282,11 @@
 "ocean_model", "e",    "e",        "ocean_Mozambique_Channel",  "all", "mean", "39. 46. -16. -16. -1 -1",2
 
 # Pacific Equatorial Undercurrent: general settings 
-"ocean_model", "thetao", "thetao", "ocean_Pacific_undercurrent",  "all", "mean", "-155. -155. -3. -3. -1 -1",2
-"ocean_model", "so",   "so",       "ocean_Pacific_undercurrent",  "all", "mean", "-155. -155. -3. -3. -1 -1",2
-"ocean_model", "umo",  "umo",      "ocean_Pacific_undercurrent",  "all", "mean", "-155. -155. -3. -3. -1 -1",2
-"ocean_model", "uo",   "uo",       "ocean_Pacific_undercurrent",  "all", "mean", "-155. -155. -3. -3. -1 -1",2
-"ocean_model", "e",    "e",        "ocean_Pacific_undercurrent",  "all", "mean", "-155. -155. -3. -3. -1 -1",2
+"ocean_model", "thetao", "thetao", "ocean_Pacific_undercurrent",  "all", "mean", "-155. -155. -3. 3. -1 -1",2
+"ocean_model", "so",   "so",       "ocean_Pacific_undercurrent",  "all", "mean", "-155. -155. -3. 3. -1 -1",2
+"ocean_model", "umo",  "umo",      "ocean_Pacific_undercurrent",  "all", "mean", "-155. -155. -3. 3. -1 -1",2
+"ocean_model", "uo",   "uo",       "ocean_Pacific_undercurrent",  "all", "mean", "-155. -155. -3. 3. -1 -1",2
+"ocean_model", "e",    "e",        "ocean_Pacific_undercurrent",  "all", "mean", "-155. -155. -3. 3. -1 -1",2
 
 # Taiwan-Luzon: general settings 
 "ocean_model", "thetao", "thetao", "ocean_Taiwan_Luzon",  "all", "mean", "-239.5 -239.5  17. 23. -1 -1",2
@@ -378,7 +378,7 @@
  "ocean_model",  "hfls",            "hfls",             "ocean_month",        "all", "mean", "none",2  # latent heat for evap+melt 
  "ocean_model",  "hfss",            "hfss",             "ocean_month",        "all", "mean", "none",2  # sensible from air-sea and ice-sea 
  "ocean_model",  "rsntds",          "rsntds"            "ocean_month",        "all", "mean", "none",2  # shortwave 
- "ocean_model",  "rsdo",            "rsdo"              "ocean_month",        "all", "mean", "none",2  # penetratie shortwave 
+ "ocean_model",  "rsdo",            "rsdo"              "ocean_month",        "all", "mean", "none",2  # penetrative shortwave flux at interface 
  "ocean_model",  "hfds",            "hfds"              "ocean_month",        "all", "mean", "none",2  # total heat entering ocean surface 
 
 # Extra heat flux terms beyond Table 2.7 from CMIP6/OMIP  
@@ -428,7 +428,8 @@
 
 # -----------------------------------------------------------------------------------------  
 # CMIP6/OMIP Table 2.10: table of heat and salt tendencies
- "ocean_model",  "opottemptend"                    ,"opottemptend",                   "ocean_annual",   "all", "mean", "none",2  
+  "ocean_model",  "rsdoabsorb"                     ,"rsdoabsorb"                      "ocean_annual",   "all", "mean", "none",2 
+  "ocean_model",  "opottemptend"                   ,"opottemptend",                   "ocean_annual",   "all", "mean", "none",2  
 # "ocean_model", "opottempadvect"                  ,"opottempadvect",                 "ocean_annual",   "all", "mean", "none",2  
  "ocean_model",  "opottemppmdiff"                  ,"opottemppmdiff",                 "ocean_annual",   "all", "mean", "none",2  
  "ocean_model",  "opottempdiff"                    ,"opottempdiff",                   "ocean_annual",   "all", "mean", "none",2  

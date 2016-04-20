@@ -1,0 +1,23 @@
+! Rho coordinates
+USE_REGRIDDING = True
+REGRIDDING_COORDINATE_MODE = "RHO" 
+INTERPOLATION_SCHEME = "P1M_H4"
+!INTERPOLATION_SCHEME = "P3M_IH4IH3"
+BOUNDARY_EXTRAPOLATION = True
+REMAPPING_SCHEME = "PPM_H4"
+MIN_THICKNESS = 1.E-12
+MASS_WEIGHT_IN_PRESSURE_GRADIENT = True
+
+! additional changes, the following are the parameters that I am playing with
+! to see if the spurious vel. are reduced. DRAG_BG_VEL needs to be ~ 0.05
+
+#override ANGSTROM = 1.0E-15              !   [m] default = 1.0E-10
+                                ! The minumum layer thickness, usually one-Angstrom.
+#override DRAG_BG_VEL = 0.0
+!#override ADIABATIC = False 
+!#override KH = 5.0            !The background Laplacian horizontal viscosity. 
+!#override KH_VEL_SCALE = 0.0   ! The velocity scale which is multiplied by the grid
+                                ! spacing to calculate the Laplacian viscosity.
+                                ! The final viscosity is the largest of this scaled
+                                ! viscosity, the Smagorinsky viscosity and KH.
+CLIP_BT_VELOCITY = False
