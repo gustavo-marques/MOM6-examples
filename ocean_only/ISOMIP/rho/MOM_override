@@ -7,6 +7,56 @@ BOUNDARY_EXTRAPOLATION = True
 REMAPPING_SCHEME = "PPM_H4"
 MIN_THICKNESS = 1.E-12
 MASS_WEIGHT_IN_PRESSURE_GRADIENT = True
+!#override REMAP_AFTER_INITIALIZATION = False
+! === module MOM_ice_shelf ===
+ICE_SHELF = False                !   [Boolean] default = False
+                                ! If true, call the code to apply an ice shelf model over
+                                ! some of the domain.
+
+DYNAMIC_SHELF_MASS = False
+SHELF_MOVING_FRONT = False
+SHELF_THERMO = False
+SHELF_THREE_EQN = False
+SHELF_2EQ_GAMMA_T = 0.0001
+BASAL_FRICTION_COEFF = 0.0  ! 3.160e6    ! this needs to be checked
+BASAL_FRICTION_EXP = 0.0      ! this needs to be checked
+DENSITY_ICE = 918.0
+ICE_VELOCITY_TIMESTEP = 86400.0
+WRITE_OUTPUT_TO_FILE = True   ! for debugging purposes
+ICE_SHELF_FLUX_FACTOR = 0.0
+ICE_SHELF_TEMPERATURE = -20.0
+ICE_PROFILE_CONFIG = "FILE"
+ICE_THICKNESS_FILE = "isomip_ice_shelf1.nc"
+ICE_THICKNESS_VARNAME = "thick"
+ICE_AREA_VARNAME = "area"
+!DEPRESS_INITIAL_SURFACE = True
+MIN_THICKNESS_SIMPLE_CALVE = 0.0    ! min thickness rule for VERY simple calving law
+SURFACE_HEIGHT_IC_FILE = "idealized.nc" !"isomip_ice_shelf1.nc"
+SURFACE_HEIGHT_IC_VAR = "height"
+SURFACE_HEIGHT_IC_SCALE = 0.885    ! I need to double check this
+COL_THICK_MELT_THRESHOLD = 1.0
+CDRAG_SHELF = 0.0025
+A_GLEN_ISOTHERM = 2.0e-17
+MIN_STRAIN_RATE_GLEN = 1.e-20
+DRAG_BG_VEL_SHELF = 0.0001
+DEPTH_MIN_DYN_PSURF = 10.0
+ICE_LENGTH_DYN_PSURF = 1.e3
+CONST_DYN_PSURF = 0.9
+!CALVE_TO_MASK = True       ! if true, do not allow an ice shelf where prohibited by a mask
+!CALVING_MASK_FILE = "isomip_ice_shelf1.nc"   ! The file with a mask for where calving might occur.
+!CALVING_MASK_VARNAME = "calving_mask"        !The variable to use in masking calving.
+TFREEZE_FORM = "MILLERO_78"
+USE_RIGID_SEA_ICE = True
+PRESSURE_DEPENDENT_FRAZIL = False
+FRAZIL = True                   !    If FRAZIL is defined, water freezes if it
+                                !  gets colder than the freezing point, and the
+                                !  accumulated heat deficit is returned in the
+                                !  surface state.
+RECLAIM_FRAZIL = True           !    If defined, balance heat consumption by
+                                !  frazil formation by cooling any overlying water
+                                !  down to the freezing point to avoid creating
+                                !  thin sea-ice for SSTs above freezing.
+
 
 ! additional changes, the following are the parameters that I am playing with
 ! to see if the spurious vel. are reduced. DRAG_BG_VEL needs to be ~ 0.05
