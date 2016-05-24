@@ -1,66 +1,91 @@
+!#override DT = 10
+!#override SPLIT = False
+
+!DO_UNIT_TESTS = True
+
 ! Rho coordinates
 USE_REGRIDDING = True
 REGRIDDING_COORDINATE_MODE = "RHO" 
 INTERPOLATION_SCHEME = "P1M_H4"
-!INTERPOLATION_SCHEME = "P3M_IH4IH3"
+!INTERPOLATION_SCHEME = "P1M_H2"
+!REGRID_TIME_SCALE = 1800.
 BOUNDARY_EXTRAPOLATION = True
 REMAPPING_SCHEME = "PPM_H4"
 MIN_THICKNESS = 1.E-12
 MASS_WEIGHT_IN_PRESSURE_GRADIENT = True
-!#override REMAP_AFTER_INITIALIZATION = False
+REMAP_AFTER_INITIALIZATION = False
+REMAP_UV_USING_OLD_ALG = False
+REGRID_USE_OLD_DIRECTION = False
+
+SURFACE_PRESSURE_FILE = "isomip_ice_shelf1.nc"
+SURFACE_PRESSURE_VAR = "thick"
+SURFACE_PRESSURE_SCALE = 8820.0 ! g m/s2 * 900.0 kg/m3
+TRIM_IC_FOR_P_SURF = True
+TFREEZE_FORM = "MILLERO_78"
+PRESSURE_DEPENDENT_FRAZIL = False
+FRAZIL = False
+RECLAIM_FRAZIL = True
+CLIP_BT_VELOCITY = False
+!split only DYNAMIC_SURFACE_PRESSURE = True
+!DEPTH_MIN_DYN_PSURF = 10.0
+!ICE_LENGTH_DYN_PSURF = 1.e3
+!CONST_DYN_PSURF = 0.9
+
+
+! Desperation
+#override BIHARMONIC = True
+SMAGORINSKY_AH = True
+SMAG_BI_CONST = 0.05
+AH_VEL_SCALE = 0.001
+#override KV = 1.E-4
+#override DIRECT_STRESS = False
+KV_TBL_MIN = 1.E-2
+
+!HARMONIC_VISC = True
+!#override HMIX_FIXED = 1.
+#override HTBL_SHELF_MIN = 1.
+#override BBL_THICK_MIN = 1.
+
 ! === module MOM_ice_shelf ===
-ICE_SHELF = False                !   [Boolean] default = False
+ICE_SHELF = True                !   [Boolean] default = False
                                 ! If true, call the code to apply an ice shelf model over
                                 ! some of the domain.
 
-DYNAMIC_SHELF_MASS = False
+DYNAMIC_SHELF_MASS = True
 SHELF_MOVING_FRONT = False
-SHELF_THERMO = False
-SHELF_THREE_EQN = False
+SHELF_THERMO = True
+SHELF_THREE_EQN = True
 SHELF_2EQ_GAMMA_T = 0.0001
 BASAL_FRICTION_COEFF = 0.0  ! 3.160e6    ! this needs to be checked
 BASAL_FRICTION_EXP = 0.0      ! this needs to be checked
 DENSITY_ICE = 918.0
 ICE_VELOCITY_TIMESTEP = 86400.0
-WRITE_OUTPUT_TO_FILE = True   ! for debugging purposes
+WRITE_OUTPUT_TO_FILE = False   ! for debugging purposes
 ICE_SHELF_FLUX_FACTOR = 0.0
 ICE_SHELF_TEMPERATURE = -20.0
+SHELF_DIAG_TIMESTEP = 300.
 ICE_PROFILE_CONFIG = "FILE"
 ICE_THICKNESS_FILE = "isomip_ice_shelf1.nc"
 ICE_THICKNESS_VARNAME = "thick"
 ICE_AREA_VARNAME = "area"
-!DEPRESS_INITIAL_SURFACE = True
+#override DENSITY_ICE = 900.
+USTAR_SHELF_BG = 0.001
+
 MIN_THICKNESS_SIMPLE_CALVE = 0.0    ! min thickness rule for VERY simple calving law
-SURFACE_HEIGHT_IC_FILE = "idealized.nc" !"isomip_ice_shelf1.nc"
-SURFACE_HEIGHT_IC_VAR = "height"
-SURFACE_HEIGHT_IC_SCALE = 0.885    ! I need to double check this
+SHELF_FILE = "isomip_ice_shelf1.nc"
+SHELF_MASS_VAR = "thick"
 COL_THICK_MELT_THRESHOLD = 1.0
 CDRAG_SHELF = 0.0025
 A_GLEN_ISOTHERM = 2.0e-17
 MIN_STRAIN_RATE_GLEN = 1.e-20
 DRAG_BG_VEL_SHELF = 0.0001
-DEPTH_MIN_DYN_PSURF = 10.0
-ICE_LENGTH_DYN_PSURF = 1.e3
-CONST_DYN_PSURF = 0.9
 !CALVE_TO_MASK = True       ! if true, do not allow an ice shelf where prohibited by a mask
 !CALVING_MASK_FILE = "isomip_ice_shelf1.nc"   ! The file with a mask for where calving might occur.
 !CALVING_MASK_VARNAME = "calving_mask"        !The variable to use in masking calving.
-TFREEZE_FORM = "MILLERO_78"
-USE_RIGID_SEA_ICE = True
-PRESSURE_DEPENDENT_FRAZIL = False
-FRAZIL = True                   !    If FRAZIL is defined, water freezes if it
-                                !  gets colder than the freezing point, and the
-                                !  accumulated heat deficit is returned in the
-                                !  surface state.
-RECLAIM_FRAZIL = True           !    If defined, balance heat consumption by
-                                !  frazil formation by cooling any overlying water
-                                !  down to the freezing point to avoid creating
-                                !  thin sea-ice for SSTs above freezing.
 
 
 ! additional changes, the following are the parameters that I am playing with
 ! to see if the spurious vel. are reduced. DRAG_BG_VEL needs to be ~ 0.05
-
 #override ANGSTROM = 1.0E-15              !   [m] default = 1.0E-10
                                 ! The minumum layer thickness, usually one-Angstrom.
 #override DRAG_BG_VEL = 0.0
@@ -70,4 +95,3 @@ RECLAIM_FRAZIL = True           !    If defined, balance heat consumption by
                                 ! spacing to calculate the Laplacian viscosity.
                                 ! The final viscosity is the largest of this scaled
                                 ! viscosity, the Smagorinsky viscosity and KH.
-CLIP_BT_VELOCITY = False
