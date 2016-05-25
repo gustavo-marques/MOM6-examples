@@ -117,7 +117,8 @@ DRHO_DS = 0.805876093                   !   [kg m-3 PSU-1] default = 0.8
                                 ! When EQN_OF_STATE=LINEAR,
                                 ! this is the partial derivative of density with
                                 ! salinity.
-
+USE_ISOMIP_TRACER = True        ! default = false
+                                ! If true, use the ISOMIP_tracer tracer package.
 ! === module MOM_tracer_flow_control ===
 INPUTDIR = "INPUT"              ! default = "."
                                 ! The directory in which input files are found.
@@ -250,7 +251,7 @@ TS_CONFIG = "ISOMIP"            !
                                 !     sloshing - TBD AJA.
                                 !     seamount - TBD AJA.
                                 !     USER - call a user modified routine.
-SPONGE = False                  !   [Boolean] default = False
+SPONGE = True                   !   [Boolean] default = False
                                 ! If true, sponges may be applied anywhere in the domain.
                                 ! The exact location and properties of those sponges are
                                 ! specified via SPONGE_CONFIG.
