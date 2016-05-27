@@ -59,8 +59,17 @@ NK = 25                         !   [nondim]
 
 ! === module MOM_verticalGrid ===
 ! Parameters providing information about the vertical grid.
+! The following parameters are used for diabatic processes.
+ENERGETICS_SFC_PBL = False       !   [Boolean] default = False
+                                ! If true, use an implied energetics planetary boundary
+                                ! layer scheme to determine the diffusivity and viscosity
+                                ! in the surface boundary layer.
 
 ! === module MOM ===
+DIABATIC_FIRST = False           !   [Boolean] default = False
+                                ! If true, apply diabatic and thermodynamic processes,
+                                ! including buoyancy forcing and mass gain or loss,
+                                ! before stepping the dynamics forward.
 ENABLE_THERMODYNAMICS = True    !   [Boolean] default = True
                                 ! If true, Temperature and salinity are used as state
                                 ! variables.
@@ -330,7 +339,7 @@ V_TRUNC_FILE = "V_velocity_truncations" ! default = ""
                                 ! leading to meridional velocity truncations are written.
                                 ! Undefine this for efficiency if this diagnostic is not
                                 ! needed.
-HMIX_FIXED = 20.0               !   [m]
+HMIX_FIXED = 2.0               !   [m]
                                 ! The prescribed depth over which the near-surface
                                 ! viscosity and diffusivity are elevated when the bulk
                                 ! mixed layer is not used.
@@ -498,7 +507,7 @@ DT_FORCING = 300.0              !   [s] default = 300.0
                                 ! The time step for changing forcing, coupling with other
                                 ! components, or potentially writing certain diagnostics.
                                 ! The default value is given by DT.
-DAYMAX = 50.                   !   [hours] default = 12.0
+DAYMAX = 30.                   !   [hours] default = 12.0
                                 ! The final time of the whole simulation, in units of
                                 ! TIMEUNIT seconds.  This also sets the potential end
                                 ! time of the present run segment if the end time is

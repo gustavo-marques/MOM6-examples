@@ -2,7 +2,7 @@
 1 1 1 0 0 0
 "prog_%4yr_%3dy",     0,"hours",1,"days","Time",365,"days"
 "ave_prog_%4yr_%3dy", 5,"days",1,"days","Time",365,"days"
-"cont_%4yr_%3dy",     5,"days",1,"days","Time",365,"days"
+#"cont_%4yr_%3dy",     5,"days",1,"days","Time",365,"days"
 #"trac_%4yr_%3dy",     5,"days",1,"days","Time",365,"days"
 "mom_%4yr_%3dy",      5,"days",1,"days","Time",10,"days"
 #"bt_mom_%4yr_%3dy",   5,"days",1,"days","Time",10,"days"
@@ -72,6 +72,7 @@
 "ocean_model","salt","salt","prog_%4yr_%3dy","all",.false.,"none",2
 #"ocean_model","Rml","Rml","prog_%4yr_%3dy","all",.false.,"none",2
 "ocean_model","tr_D1","tr1","prog_%4yr_%3dy","all",.false.,"none",2
+"ocean_model","tr_D2","tr2","prog_%4yr_%3dy","all",.false.,"none",2
 
 #"ocean_model","RV","RV","prog_%4yr_%3dy","all",.false.,"none",2
 #"ocean_model","PV","PV","prog_%4yr_%3dy","all",.false.,"none",2
@@ -108,8 +109,8 @@
 #===========================
 #"ocean_model","dhdt","dhdt","cont_%4yr_%3dy","all",.true.,"none",2
 #"ocean_model","wd","wd","cont_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","uh","uh","cont_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","vh","vh","cont_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","uh","uh","cont_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","vh","vh","cont_%4yr_%3dy","all",.true.,"none",2
 #"ocean_model","uhGM","uhGM","cont_%4yr_%3dy","all",.true.,"none",2
 #"ocean_model","vhGM","vhGM","cont_%4yr_%3dy","all",.true.,"none",2
 #"ocean_model","uhbt","uhbt","cont_%4yr_%3dy","all",.true.,"none",2
