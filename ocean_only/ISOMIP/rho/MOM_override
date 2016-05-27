@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 !#override DT = 10
 !#override SPLIT = False
 
@@ -95,3 +96,6 @@ DRAG_BG_VEL_SHELF = 0.0001
                                 ! spacing to calculate the Laplacian viscosity.
                                 ! The final viscosity is the largest of this scaled
                                 ! viscosity, the Smagorinsky viscosity and KH.
+=======
+! Blank file in which we can put "overrides" for parameters
+>>>>>>> dev/master
