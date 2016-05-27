@@ -92,14 +92,14 @@ EQN_OF_STATE = "LINEAR"         ! default = "WRIGHT"
                                 ! should be used.  Currently, the valid choices are
                                 ! "LINEAR", "UNESCO", and "WRIGHT".
                                 ! This is only used if USE_EOS is true.
-RHO_T0_S0 = 999.9106806711001   !   [kg m-3] default = 1000.0
+RHO_T0_S0 = 999.910681          !   [kg m-3] default = 1000.0
                                 ! When EQN_OF_STATE=LINEAR,
                                 ! this is the density at T=0, S=0.
-DRHO_DT = -0.0383569483         !   [kg m-3 K-1] default = -0.2
+DRHO_DT = -0.038357             !   [kg m-3 K-1] default = -0.2
                                 ! When EQN_OF_STATE=LINEAR,
                                 ! this is the partial derivative of density with
                                 ! temperature.
-DRHO_DS = 0.805876093           !   [kg m-3 PSU-1] default = 0.8
+DRHO_DS = 0.805876              !   [kg m-3 PSU-1] default = 0.8
                                 ! When EQN_OF_STATE=LINEAR,
                                 ! this is the partial derivative of density with
                                 ! salinity.
@@ -169,7 +169,7 @@ ROTATION = "beta"               ! default = "2omegasinlat"
                                 !       times the sine of latitude.
                                 !     betaplane - Use a beta-plane or f-plane.
                                 !     USER - call a user modified routine.
-F_0 = -1.408706225059977E-04    !   [s-1] default = 0.0
+F_0 = -1.40871E-04              !   [s-1] default = 0.0
                                 ! The reference value of the Coriolis parameter with the
                                 ! betaplane option.
 COORD_CONFIG = "linear"         !
