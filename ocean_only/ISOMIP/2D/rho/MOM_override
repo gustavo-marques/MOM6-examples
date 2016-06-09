@@ -1,14 +1,12 @@
 ! Continuous isopycnal mode + initialization
 #override USE_REGRIDDING = True
 #override REGRIDDING_COORDINATE_MODE = "RHO" 
-#override INTERPOLATION_SCHEME = "PPM_H4"
+#override INTERPOLATION_SCHEME = "P1M_H4"
 #override BOUNDARY_EXTRAPOLATION = True
 #override REMAPPING_SCHEME = "PPM_H4"
-#override DT = 1000.0
-#override DT_THERM = 1000.0
+#override DT = 300.0
+#override DT_THERM = 300.0
 #override DAYMAX = 365.0
 #override TS_CONFIG = "ISOMIP"
 #override SURFACE_PRESSURE_FILE = "2D_IC_zeros.nc"
 #override ICE_THICKNESS_FILE = "2D_IC_zeros.nc"
-#override AH_VEL_SCALE = 0.0
-#override KVML = 1.0E-04
