@@ -1,14 +1,17 @@
 ! Blank file in which we can put "overrides" for parameters
 !#override REGRIDDING_COORDINATE_MODE = "RHO" 
 !#override BULKMIXEDLAYER = True
-!BULK_RI_ML = 0.2
-!#override NK = 25
-#override TRIM_IC_FOR_P_SURF = False
-#override ICE_SHELF = False
+!BULK_RI_ML = 0.0
+!#override TRIM_IC_FOR_P_SURF = False
+!#override ICE_SHELF = False
+#override ICE_THICKNESS_FILE = "2D_IC_half_end.nc"
+#override SURFACE_PRESSURE_FILE = "2D_IC_half_end.nc"
 #override DAYMAX = 10.0
-#override DT = 1000.0
-#override DT_THERM = 1000.0
-#override TRIM_IC_FOR_P_SURF = False
+!#override DT = 1000.0
+!#override DT_THERM = 1000.0
+#override KD_MIN_TR = 0.
+#override KD = 0.0
+#override KH = 0.0
 !#override SHELF_THERMO = True
 !#override SHELF_THREE_EQN = True
 !#override SPONGE = True

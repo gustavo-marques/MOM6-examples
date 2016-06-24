@@ -75,7 +75,7 @@ DTBT_RESET_PERIOD = 0.0         !   [s] default = 300.0
                                 ! dynamic, DTBT will be set at least every forcing time
                                 ! step, and if 0, every dynamics time step.  The default is
                                 ! set by DT_THERM.  This is only used if SPLIT is true.
-C_P = 3925.0                    !   [J kg-1 K-1] default = 3991.86795711963
+C_P = 3974.0                    !   [J kg-1 K-1] default = 3991.86795711963
                                 ! The heat capacity of sea water, approximated as a
                                 ! constant. This is only used if ENABLE_THERMODYNAMICS is
                                 ! true. The default value is from the TEOS-10 definition
@@ -607,7 +607,7 @@ SHELF_THREE_EQN = False         !   [Boolean] default = True
 SHELF_2EQ_GAMMA_T = 1.0E-04     !   [m s-1]
                                 ! If SHELF_THREE_EQN is false, this the fixed turbulent
                                 ! exchange velocity at the ice-ocean interface.
-ICE_SHELF_FLUX_FACTOR = 1.0     !   [none] default = 1.0
+ICE_SHELF_FLUX_FACTOR = 0.0     !   [none] default = 1.0
                                 ! Non-dimensional factor applied to shelf thermodynamic
                                 ! fluxes.
 ICE_SHELF_TEMPERATURE = -15.0   !   [degC] default = -15.0

@@ -6,10 +6,10 @@
 #"trac_%4yr_%3dy",     5,"days",1,"days","Time",365,"days"
 #"mom_%4yr_%3dy",      1,"days",1,"days","Time",365,"days"
 #"bt_mom_%4yr_%3dy",   1,"days",1,"days","Time",10,"days"
-"visc_%4yr_%3dy",     1,"days",1,"days","Time",365,"days"
+#"visc_%4yr_%3dy",     1,"days",1,"days","Time",365,"days"
 #"energy_%4yr_%3dy",   5,"days",1,"days","Time",10,"days"
 #"ML_TKE_%4yr_%3dy",   5,"days",1,"days","Time",10,"days"
-"forcing_%4yr_%3dy",  1,"hours",1,"days","Time",365,"days"
+#"forcing_%4yr_%3dy",  1,"hours",1,"days","Time",365,"days"
 
 #"ocean_model","dv_dt_visc","dv_dt_visc","mom_%4yr_%3dy","all",.true.,"none",2
 #"ocean_model","du_dt_visc","du_dt_visc","mom_%4yr_%3dy","all",.true.,"none",2
@@ -180,20 +180,20 @@
 #
 # Viscosities and diffusivities:
 #===============================
-"ocean_model","Kd_interface","Kd_interface","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","ePBL_h_ML","ePBL_h_ML","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","Kd_ePBL","Kd_ePBL","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","Kd_effective","Kd_effective","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","Ahh","Ahh","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","Ahq","Ahq","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","Khh","Khh","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","Khq","Khq","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","bbl_thick_u","bbl_thick_u","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","kv_bbl_u","kv_bbl_u","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","bbl_thick_v","bbl_thick_v","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","kv_bbl_v","kv_bbl_v","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","av_visc","av_visc","visc_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","au_visc","au_visc","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","Kd_interface","Kd_interface","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","ePBL_h_ML","ePBL_h_ML","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","Kd_ePBL","Kd_ePBL","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","Kd_effective","Kd_effective","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","Ahh","Ahh","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","Ahq","Ahq","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","Khh","Khh","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","Khq","Khq","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","bbl_thick_u","bbl_thick_u","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","kv_bbl_u","kv_bbl_u","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","bbl_thick_v","bbl_thick_v","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","kv_bbl_v","kv_bbl_v","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","av_visc","av_visc","visc_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","au_visc","au_visc","visc_%4yr_%3dy","all",.true.,"none",2
 #
 # Kinetic Energy Balance Terms:
 #=============================
@@ -220,12 +220,12 @@
 #=================
 #"ocean_model","taux","taux","forcing_%4yr_%3dy","all",.true.,"none",2
 #"ocean_model","tauy","tauy","forcing_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","ustar","ustar","forcing_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","ustar","ustar","forcing_%4yr_%3dy","all",.true.,"none",2
 #"ocean_model","PRCmE","PRCmE","forcing_%4yr_%3dy","all",.true.,"none",2
 #"ocean_model","SW","SW","forcing_%4yr_%3dy","all",.true.,"none",2
 #"ocean_model","LwLatSens","LwLatSens","forcing_%4yr_%3dy","all",.true.,"none",2
 #"ocean_model","p_surf","p_surf","forcing_%4yr_%3dy","all",.true.,"none",2
-"ocean_model","salt_flux","salt_flux","forcing_%4yr_%3dy","all",.true.,"none",2
+#"ocean_model","salt_flux","salt_flux","forcing_%4yr_%3dy","all",.true.,"none",2
 #
 
 
