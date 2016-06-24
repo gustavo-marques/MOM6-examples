@@ -1,2 +1,18 @@
 ! Blank file in which we can put "overrides" for parameters
-REENTRANT_Y = False
+!#override REGRIDDING_COORDINATE_MODE = "RHO" 
+!#override BULKMIXEDLAYER = True
+!BULK_RI_ML = 0.2
+!#override NK = 25
+#override TRIM_IC_FOR_P_SURF = False
+#override ICE_SHELF = False
+#override DAYMAX = 10.0
+#override DT = 1000.0
+#override DT_THERM = 1000.0
+#override TRIM_IC_FOR_P_SURF = False
+!#override SHELF_THERMO = True
+!#override SHELF_THREE_EQN = True
+!#override SPONGE = True
+#override ISOMIP_S_SUR_SPONGE = 33.8      
+#override ISOMIP_S_BOT_SPONGE = 34.7    
+#override ISOMIP_T_SUR_SPONGE = -1.9    
+#override ISOMIP_T_BOT_SPONGE = 1.0 

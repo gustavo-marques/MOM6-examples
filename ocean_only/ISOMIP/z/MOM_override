@@ -1,6 +1,24 @@
 ! Continuous isopycnal mode + initialization
-USE_REGRIDDING = True
-REGRIDDING_COORDINATE_MODE = "Z*" 
-INTERPOLATION_SCHEME = "PPM_IH4"
-BOUNDARY_EXTRAPOLATION = True
-REMAPPING_SCHEME = "PPM_IH4"
+#override TS_CONFIG = "ISOMIP"
+#override USE_REGRIDDING = True
+#override REGRIDDING_COORDINATE_MODE = "Z*" 
+#override INTERPOLATION_SCHEME = "PPM_H4"
+#override BOUNDARY_EXTRAPOLATION = True
+#override REMAPPING_SCHEME = "PPM_H4"
+#override DAYMAX = 50.0
+#override KV = 1.0E-4
+ZSTAR_RIGID_SURFACE_THRESHOLD = -10.
+TRIMMING_USES_REMAPPING = True
+#override F_0 = 0.0
+!#override ICE_SHELF = False
+!#override TRIM_IC_FOR_P_SURF = False
+!#override SURFACE_PRESSURE_FILE = "isomip_ice_shelf2.nc"
+!#override ICE_THICKNESS_FILE = "isomip_ice_shelf2.nc"
+!#override SPONGE = True
+!#override SPONGE_CONFIG = "ISOMIP" 
+!#override ISOMIP_TNUDG = 0.0001     
+!ISOMIP_S_SUR_SPONGE = 33.8 
+!ISOMIP_S_BOT_SPONGE = 34.55
+!ISOMIP_T_SUR_SPONGE =  -1.9 
+!ISOMIP_T_BOT_SPONGE =  -1.9  
+

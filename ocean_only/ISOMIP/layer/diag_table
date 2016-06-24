@@ -30,12 +30,12 @@
 "ocean_model","u_BT_accel","du_BT","mom_%4yr_%3dy","all",.true.,"none",2
 "ocean_model","v_BT_accel","dv_BT","mom_%4yr_%3dy","all",.true.,"none",2
 
-#"bt_high_freq_%4yr_%3dy",  0,"days",1,"days","Time",10,"days"
+"bt_high_freq_%4yr_%3dy",  0,"days",1,"days","Time",10,"days"
 
 #This is the field section of the diag_table.
 
 #"ocean_model","ubt_hifreq","ubt","bt_high_freq_%4yr_%3dy","all",.false.,"none",2
-#"ocean_model","eta_hifreq","eta","bt_high_freq_%4yr_%3dy","all",.false.,"none",2
+"ocean_model","eta_hifreq","eta","bt_high_freq_%4yr_%3dy","all",.false.,"none",2
 #"ocean_model","vbt_hifreq","vbt","bt_high_freq_%4yr_%3dy","all",.false.,"none",2
 #"ocean_model","uhbt_hifreq","uhbt","bt_high_freq_%4yr_%3dy","all",.false.,"none",2
 

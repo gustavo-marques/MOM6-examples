@@ -1,6 +1,6 @@
 netcdf ice_shelf_v1 {
 dimensions:
-	ny = 40 ;
+	ny = 8 ;
 	nx = 240 ;
 variables:
 	double thick(ny, nx) ;
